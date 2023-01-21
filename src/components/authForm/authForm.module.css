@@ -1,0 +1,39 @@
+.authform{
+    background-color: white;
+    box-shadow: 0px 8px 11px -8px rgba(34, 60, 80, 0.09);
+    margin-bottom: 15px;
+    width: 320px;
+    padding: 25px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10%;
+
+}
+.authform_input_container{
+    width: 100%;
+}
+.authform_input_name{
+    font-size: 14px;
+    font-weight: 500;
+}
+.authform_input{
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1.5px solid black;
+   
+}
+.authform_message{
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+.authform_error{
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(151, 17, 17, 0.868);
+    text-align: center;
+}

@@ -1,0 +1,42 @@
+.navbar{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    background-color: white;
+    width: 100%;
+}
+.navbar_logo{
+    margin: 0;
+    width: 40px;
+}
+.container {
+    width: 1140px;
+    display: flex;
+    align-items: center;
+  }
+.header{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 15px;
+}
+.navbar_buttons{
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+.navbar_user_menu_container{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.navbar_user_menu_username{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.navbar_user_menu_vertical_line{
+    background-color: grey;
+    border: none;
+    width: 1px;
+    height: 20px;
+}
