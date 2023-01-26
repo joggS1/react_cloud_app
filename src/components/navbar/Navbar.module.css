@@ -15,6 +15,8 @@
     align-items: center;
   }
 .header{
+    text-decoration: none;
+    color: black;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 20px;

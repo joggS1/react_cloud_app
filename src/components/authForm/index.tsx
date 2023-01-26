@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { api } from "../../services/authService";
+import { deleteFilesWhenLogout } from "../../services/fileSlice";
 import { Button } from "../button";
 import styles from './authForm.module.css'
 
@@ -15,13 +17,11 @@ interface AuthFormPorps {
 
 export const AuthForm: React.FC<AuthFormPorps> = ({mode}) => {
     const [user, setUser] = useState(DEFAULT_FORM_VALUE)
-    
+    const dispath = useDispatch()
     const [createUser, {data: createMessage, error: createError}] = api.useCreateUserMutation();
     const [authUser, {data: authMessage, error: authError}] = api.useAuthUserMutation();
     let Error: string = '';
     let message: string = '';
-
-
 
 
 
@@ -32,12 +32,14 @@ export const AuthForm: React.FC<AuthFormPorps> = ({mode}) => {
     const login = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         await authUser({email: user.email, password : user.password})
+        await dispath(deleteFilesWhenLogout())
         
     }
 
     const register = async (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault()
         await createUser(user)
+
         
     }
 
@@ -72,7 +74,7 @@ export const AuthForm: React.FC<AuthFormPorps> = ({mode}) => {
                     <input className={styles.authform_input} type="password" value={user.password} id="password" name="password" onChange={onChange} placeholder="qwerty" required={true}/>
                 </label>
             </div>
-            <Button className={styles.authform_button} color="primary" type="submit" >Sign Up</Button>
+            <Button className={styles.authform_button} color="primary" type="submit" >{mode === 'create' ? 'Sign Up' : 'Sign In'}</Button>
 
 
      </form>

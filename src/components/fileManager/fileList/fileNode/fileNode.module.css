@@ -1,0 +1,36 @@
+.file_node{
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+    transition: all .15s ease;
+    box-shadow: 0px 11px 11px -11px rgba(34, 60, 80, 0.09);
+    border-radius: 13px;
+}
+.file_node:hover{
+    background-color: rgb(216, 216, 216);
+    transform: scale(1.01);
+    cursor: pointer;
+    
+}
+.file_node_name{
+    grid-column-start: 2;
+    align-self: center;
+}
+.file_node_size{
+    grid-column-start: 5;
+    justify-self: center;
+    align-self: center;
+}
+.file_node_date{
+    grid-column-start: 6;
+    justify-self: center;
+    align-self: center;
+}
+.file_node_icon{
+    grid-column-start: 1;
+    width: 42px;
+    height: 42px;
+   justify-self: center;
+   
+
+}

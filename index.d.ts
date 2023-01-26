@@ -1,5 +1,6 @@
 
-  declare module '*.module.css' {
+  
+declare module '*.module.css' {
     const classes: { [key: string]: string };
     export default classes;
   }
@@ -20,12 +21,14 @@ type UserType = {
     files?: any[];
   };
 
+
+
 type AuthState = {
   user : Omit<UserType, 'password' | 'files'> | null;
   isAuthenticated: boolean;
-  token: string | null;
   message: string | null;
 }  
+
 // INTERFACES
 interface Service {
     isLogined: boolean;
@@ -46,13 +49,19 @@ type SignUpMessage= {
     date: string
 }
 type SignInMessage = {
-    user: Omit<UserType, 'password' | 'files'>,
+    user: Omit<UserType, 'password'>,
     isSignIn: boolean,
     message: string,
     JWT: string,
     date: string
 }
 type AuthMeMessage = {
-    id: string,
-    date: string
+  user: Omit<UserType, 'password'>,
+  isSignIn: boolean,
+  JWT: string,
+  date: string
+}
+ type GetFilesMessage = {
+  files: FileType[] | [],
+  date: string
 }

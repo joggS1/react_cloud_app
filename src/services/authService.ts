@@ -1,14 +1,16 @@
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { RootState } from '../store'
+import { CreateDirectoryBody, CreateDirectoryMessage } from '../types/filesType'
+
 
 
 
 export const api = createApi({
     reducerPath: 'api',
+    tagTypes: ['File'],
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8080/api',
-    prepareHeaders: (headers, { getState }) => {
-        const token = (getState() as RootState).auth.token
+    prepareHeaders: (headers) => {
+        const token =  localStorage.getItem('token')
         if (token) {
           headers.set('authorization', `Bearer ${token}`)
         }
@@ -30,6 +32,37 @@ export const api = createApi({
                 method: 'POST',
                 body: user
             })
-        })
+        }),
+        authRequest: builder.query<AuthMeMessage, void>({
+            query: () => ({
+                url: '/authme',
+               
+            })
+        }),
+        getFiles: builder.query<GetFilesMessage, string | null>({
+            query: (currentDirectory) => ({
+                url: `/files/${currentDirectory ? `?parent=`+currentDirectory : ``}`,
+                keepUnusedDataFor: 0.0001
+            }),
+            providesTags: ['File'],
+        
+        }),
+        createDirectory: builder.mutation<CreateDirectoryMessage, CreateDirectoryBody>({
+            query: (directory) => ({
+                url: `/files`,
+                method: 'POST',
+                body: directory,
+            }),
+            invalidatesTags: ['File']
+        }),
+        uploadFile: builder.mutation<CreateDirectoryMessage, FormData>({
+            query: (form) => ({
+                url: '/files/upload',
+                method: 'POST',
+                body: form,
+                
+            }),
+            invalidatesTags: ['File'],
+        }),
     })
 })

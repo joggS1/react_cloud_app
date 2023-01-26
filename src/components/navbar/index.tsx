@@ -19,8 +19,8 @@ export const Navbar: React.FC = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.container}>
-                <img src={Logo} alt="logo" className={styles.navbar_logo}/>
-                <div className={styles.header}>cloud storage</div>
+                <NavLink to="/"><img src={Logo} alt="logo" className={styles.navbar_logo}/></NavLink> 
+                <NavLink to="/" className={styles.header}>cloud storage</NavLink>
                 <div className={styles.navbar_buttons}>
                 {isAuth ? 
                 

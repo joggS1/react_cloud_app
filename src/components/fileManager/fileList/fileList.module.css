@@ -1,0 +1,19 @@
+.file_list{
+
+}
+.file_list_header{
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+}
+.file_list_header_name{
+    grid-column-start: 2;
+   
+}
+.file_list_header_size{
+    grid-column-start: 5;
+    justify-self: center;
+}
+.file_list_header_date{
+    grid-column-start: 6;
+    justify-self: center;
+}   

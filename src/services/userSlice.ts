@@ -5,24 +5,33 @@ import { RootState } from "../store"
 
 const slice = createSlice({
     name: 'auth',
-    initialState: { user: null, token: null, isAuthenticated: false, message: null } as AuthState,
+    initialState: { user: null, isAuthenticated: false, message: null } as AuthState,
     reducers: {
       logout: (state) => {
         state.user = null
-        state.token = null
+        localStorage.removeItem('token')
         state.isAuthenticated = false
       },
     },
     extraReducers: (builder) => {
-      builder.addMatcher(
+      builder
+      .addMatcher(
         api.endpoints.authUser.matchFulfilled,
         (state, { payload }) => {
           state.message = payload.message
           state.user = payload.user
-          state.token = payload.JWT
+          localStorage.setItem('token', payload.JWT)
           state.isAuthenticated = true
         },
       )
+      .addMatcher(api.endpoints.authRequest.matchFulfilled,
+        (state, {payload}) => {
+          state.isAuthenticated = true
+          state.user = payload.user
+          localStorage.setItem('token', payload.JWT)
+        }
+      )
+
     },
   })
 
