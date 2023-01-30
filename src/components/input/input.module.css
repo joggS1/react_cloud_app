@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+}
+.name{
+    font-size: 14px;
+    font-weight: 500;
+}
+.field{
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1.5px solid black;
+}
